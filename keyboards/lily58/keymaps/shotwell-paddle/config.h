@@ -22,14 +22,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
-//#define MASTER_RIGHT
+//#define MASTER_LEFT
+#define MASTER_RIGHT
 // #define EE_HANDS
 
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 100
 
-/* mousekey stuff */
+/* mousekey stuff 
 #define MOUSEKEY_INTERVAL           20
 #define MOUSEKEY_DELAY              0
 #define MOUSEKEY_TIME_TO_MAX        60
@@ -43,7 +43,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PIMORONI_MOUSE_ACCEL 1.5
 #define PIMORONI_MOUSE_POWER 2.2
 #define PIMORONI_ACCEL_PERMANENT 1
-
+*/
 /*#undef RGBLED_NUM
 #define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 27
