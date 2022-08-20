@@ -38,12 +38,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_WHEEL_MAX_SPEED    4
 #define MOUSEKEY_WHEEL_TIME_TO_MAX  50
 #define MOUSEKEY_WHEEL_INTERVAL     40
-
+/*
 #define PIMORONI_SCROLL_ACCEL 0.4
 #define PIMORONI_MOUSE_ACCEL 1.5
 #define PIMORONI_MOUSE_POWER 2.2
 #define PIMORONI_ACCEL_PERMANENT 1
+*/
 
+#define SPLIT_POINTING_ENABLE
+#define POINTING_DEVICE_RIGHT
+#define MOUSE_EXTENDED_REPOR
 /*#undef RGBLED_NUM
 #define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 27
