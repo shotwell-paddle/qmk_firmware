@@ -101,9 +101,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_MOUSE] = LAYOUT( \
   XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-  XXXXXXX, KC_BTN1, KC_BTN3, KC_BTN2, KC_WH_U, XXXXXXX,                   KC_BTN1, KC_BTN3, KC_BTN2, KC_WH_U, XXXXXXX, _______, \
-  _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX,                   KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX, _______, \
-  _______, XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, _______,\
+  XXXXXXX, KC_BTN1, KC_BTN3, KC_BTN2, KC_WH_U, XXXXXXX,                   XXXXXXX, KC_BTN1, KC_BTN3, KC_BTN2, KC_WH_U, _______, \
+  _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX,                   XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, \
+  _______, XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R,\
                              _______, _______, _______, _______, _______,  _______, _______, _______ \
   )
 
