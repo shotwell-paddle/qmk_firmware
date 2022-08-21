@@ -17,7 +17,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |LCTRL |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
+ * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |SWAPTT|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | TG(1)| LALT |LGUI  | /Space  /       \Enter \  |Backsp|KC_ASTG| TG(2) |
  *                   |      |      |      |/       /         \      \ |      |       |       |
@@ -25,10 +25,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
  [_QWERTY] = LAYOUT(
-  QK_GESC,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_KP_EQUAL,
+  QK_GESC,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_EQUAL,
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
   KC_LCTRL, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
+  SH_TT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SH_TT,
                     TG(_LOWER), KC_LALT, KC_LGUI, KC_SPC, KC_ENT, KC_BSPC, KC_ASTG, TG(_RAISE)
 ),
 /* LOWER
@@ -98,6 +98,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
+        
+    {{0,5}, {1,5}, {2,5}, {3,5}, {4,5}, {5,5}},
+    {{0,6}, {1,6}, {2,6}, {3,6}, {4,6}, {5,6}},
+    {{0,7}, {1,7}, {2,7}, {3,7}, {4,7}, {5,7}},
+    {{0,8}, {1,8}, {2,8}, {3,8}, {4,8}, {5,8}},
+    {{0,9}, {1,9}, {2,9}, {3,9}, {4,9}, {5,9}},
+    {{0,0}, {1,0}, {2,0}, {3,0}, {4,0}, {5,0}},
+    {{0,1}, {1,1}, {2,1}, {3,1}, {4,1}, {5,1}},
+    {{0,2}, {1,2}, {2,2}, {3,2}, {4,2}, {5,2}},
+    {{0,3}, {1,3}, {2,3}, {3,3}, {4,3}, {5,3}},
+    {{0,4}, {1,4}, {2,4}, {3,4}, {4,4}, {5,4}},
+};
+
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (is_keyboard_master())
@@ -132,7 +146,7 @@ const char *read_keylogs(void);
     oled_write(read_logo(), false);
   }
 }*/
-
+//functionl oled code
 static void print_status_narrow(void) {
     oled_write_ln_P(PSTR("<3"), false);
 
@@ -174,13 +188,24 @@ static void print_status_narrow(void) {
 
 
 bool oled_task_user(void) {
-  oled_write(read_logo(), false);
+  //oled_write(read_logo(), false);
     if (is_keyboard_master()) {
         print_status_narrow();
     } else {
-        oled_write(read_logo(), false);
+        //oled_write(read_logo(), false);
+        oled_set_cursor(0,1);
+        uint8_t n = get_current_wpm();
+        char    wpm_counter[4];
+        wpm_counter[3] = '\0';
+        wpm_counter[2] = '0' + n % 10;
+        wpm_counter[1] = (n /= 10) % 10 ? '0' + (n) % 10 : (n / 10) % 10 ? '0' : ' ';
+        wpm_counter[0] = n / 10 ? '0' + n / 10 : ' ';
+        oled_write_P(PSTR("WPM: "), false);
+        oled_write(wpm_counter, false);
     }
     return false;
 }
 #endif
+
+
 
