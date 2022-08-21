@@ -189,6 +189,9 @@ static void print_status_narrow(void) {
         case _LOWER:
             oled_write_P(PSTR("low"), false);
             break;
+        case _MOUSE:
+            oled_write_P(PSTR("mouse"), false);
+            break;
 
         default:
             oled_write_ln_P(PSTR("undef"), false);
